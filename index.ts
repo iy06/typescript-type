@@ -57,7 +57,21 @@ const book: [string, number, boolean] = ['bussiness', 1500, false];
 // book.push(200);
 // console.log(book[3]);
 
+// 列挙型
+// 特定のまとまったグループのみを受け取る
+enum CoffeeSize {
+  SHORT = 'SHORT',
+  TALL = 'TALL',
+  GRANDE = 'GRANDE',
+  VENTI = 'VENTI'
+}
 
+const coffee = {
+  hot: true,
+  size: CoffeeSize.TALL
+}
+
+coffee.size = CoffeeSize.SHORT;
 
 
 
