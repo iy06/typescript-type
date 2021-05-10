@@ -51,30 +51,127 @@ const persong: {
 // 配列の型定義
 // 文字列の配列
 const fruits: string[] = ['apple', 'orange', 'pinapple'];
+
 // タプル型の型定義
 const book: [string, number, boolean] = ['bussiness', 1500, false];
 //型定義したあとにpushできるが、出力の際にしっかり怒られる
 // book.push(200);
 // console.log(book[3]);
 
-// 列挙型
-// 特定のまとまったグループのみを受け取る
+// enum型（列挙型）
+// 特定のまとまったグループのみを受け取るようにenumを使用する。
 enum CoffeeSize {
   SHORT = 'SHORT',
   TALL = 'TALL',
   GRANDE = 'GRANDE',
   VENTI = 'VENTI'
 }
-
+// enumは文字列でなく、数値型でもOK
 const coffee = {
   hot: true,
   size: CoffeeSize.TALL
 }
-
+// coffee.size = 'aaaaa';
+// 上記のような代入を防ぐことが出来ます。
 coffee.size = CoffeeSize.SHORT;
 
+// any型
+// any型は何でも入る。
+let anything: any = 'hello';
+anything = {};
+anything = ['hello', 40, true];
 
+let banana = 'banana';
+// anyはstring型のbananaにも代入できてしまう。
+banana = anything;
+// なので極力any型は使わずに記述する。
 
+// Union型
+let unionType: number | string = 10;
+// unionType.toUpperCase();
+unionType = 'hello';
+// unionType.toUpperCase();
+// union型は代入時のタイミングでしっかりと使えないメソッドはエラーを吐いてくれます。
+// Union型の配列は（）で囲む必要があります。
+let unionTypes: (number | string)[] = [21, 'hello'];
 
+// リテラル型
+// リテラル型は決まった値しか代入でき内容にする型
+const apple: 'apple' = 'apple';
+// typescriptはconstを使うことでリテラル型になります。
+// union型とリテラル型を混合型
+// let clothSize: 'small' | 'medium' | 'large' = 'large'
+// const cloth = {
+//   color: 'white',
+//   size: clothSize
+// }
+// ３つくらいまでならenumより混合型を使用してもよいかも
 
+// typeエイリアス
+// typeエイリアスは型を変数のように使えるものです。
+type CloseSize = 'small' | 'medium' | 'large'
 
+let clothSize: CloseSize = 'large';
+
+const close2 = {
+  color: 'white',
+  size: clothSize
+}
+
+// 関数に型をつける
+// 関数に型をつける場合はパラメータ（引数）と戻り値になる。
+function add (num1: number, num2: number): number {
+  return num1 + num2
+}
+// 戻り地はパラメータの後ろに記述する。
+add(2, 3);
+// 関数の型推論は戻り値のみ！
+// パラメータの型定義は記述しなければ、any方になります。
+
+// 戻り値のない関数の型定義時の型定義
+function sayHello(): void {
+  console.log('hello');
+}
+console.log(sayHello());
+// 実際にはsayHallo関数は戻り値としてundifinedを返すため、
+// function sayHello(): undefined {
+//   console.log('hello');
+//   return;
+// }
+// 上記のようにreturnを記述すればundifinedを使えますが、基本的にvoidを使用します。
+
+// undefined型、null型
+// nullも代入できる
+let undefinedType: undefined = undefined;
+undefinedType = null;
+// undefinedも代入できる。
+let nullType: null = null;
+nullType = undefined;
+
+// 関数を保持する変数に型をつける。(関数の型注釈)
+const anotherAdd: (n1: number, n2: number) => number = add;
+
+// 関数
+// ・宣言時
+//   function say (str: string): void {
+//     console.log('sayhello');
+//   };
+//   // アロー関数
+//   const say = (str: string): void => {
+//     console.log('sayhello');
+//   };
+// ・関数を保持する変数
+//   let sayFunction: (str: string) => void = say;
+//   型推論は片方に型定義があればOK
+// アロー関数の場合引数が一つであれば()を省略できる。return文を省略できる
+// const doubleNumber = (num: number): number => {
+//   return num * 2
+// };
+// const doubleNumber = number => number *2;
+// 型注釈を左辺に記述する場合は省略できる。
+// const doubleNumber:(num: number) => number = num => num * 2;
+
+// コールバック関数の型定義
+function doubleAndHandler(num: number, ): number {
+  return num * 2;
+};
