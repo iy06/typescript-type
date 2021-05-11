@@ -172,6 +172,38 @@ const anotherAdd: (n1: number, n2: number) => number = add;
 // const doubleNumber:(num: number) => number = num => num * 2;
 
 // コールバック関数の型定義
-function doubleAndHandler(num: number, ): number {
+function doubleAndHandler(num: number, cb: (num: number) => number): number {
+  const doubelNumber = cb(num * 2);
   return num * 2;
 };
+
+doubleAndHandler(21, doubleNum => {
+  return doubleNum;
+});
+
+// unknown型とany型
+// any型は何でも代入できる。
+let anyVariable: any;
+anyVariable = 'hello';
+anyVariable = 21;
+anyVariable = true;
+// unknown型は使う時だけ厳しくなる。
+// 基本anyと同じくなんでも代入できる。
+let unknownVariable: unknown;
+// string型の変数textにanyVariableは代入できるが、unkownVariableは代入できない。
+let text: string;
+text = anyVariable;
+text = unknownVariable;
+// unknown型を使用する場合は、typeofを使って条件分岐させます。
+if (typeof unknownVariable == 'string') {
+  text = unknownVariable;
+}
+
+// never型
+// never型は消して何も返さない型です。
+// void型では明示的にあ戻り値がないことを記述していましたが、実際にはundifinedが返ってきていました。
+// ただし、never型はundifinedも返さない型になります。
+// Typescriptのversion3からリリースされたため非常に新しい型になっています。
+
+
+
