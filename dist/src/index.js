@@ -1,15 +1,15 @@
 "use strict";
 // typescriptの型レッスン
 // boolean型
-var hasValue = true;
+let hasValue = true;
 // number型
-var count = 10;
-var float = 3.14;
-var negative = -1;
+let count = 10;
+let float = 3.14;
+let negative = -1;
 // string型
-var single = '';
-var double = "";
-var back = "";
+let single = '';
+let double = "";
+let back = ``;
 // 基本的には型推論を使用する
 // boolean型
 // let hasValue = true;
@@ -23,7 +23,7 @@ var back = "";
 // let back = ``;
 // オブジェクト型の型定義
 // objectや{}はごく一般的なオブジェクトの意味なのであまり使用しない。
-var persong = {
+const persong = {
     name: {
         first: 'yuuki',
         last: 'tuuki'
@@ -40,9 +40,9 @@ var persong = {
 // }
 // 配列の型定義
 // 文字列の配列
-var fruits = ['apple', 'orange', 'pinapple'];
+const fruits = ['apple', 'orange', 'pinapple'];
 // タプル型の型定義
-var book = ['bussiness', 1500, false];
+const book = ['bussiness', 1500, false];
 //型定義したあとにpushできるが、出力の際にしっかり怒られる
 // book.push(200);
 // console.log(book[3]);
@@ -56,7 +56,7 @@ var CoffeeSize;
     CoffeeSize["VENTI"] = "VENTI";
 })(CoffeeSize || (CoffeeSize = {}));
 // enumは文字列でなく、数値型でもOK
-var coffee = {
+const coffee = {
     hot: true,
     size: CoffeeSize.TALL
 };
@@ -65,26 +65,26 @@ var coffee = {
 coffee.size = CoffeeSize.SHORT;
 // any型
 // any型は何でも入る。
-var anything = 'hello';
+let anything = 'hello';
 anything = {};
 anything = ['hello', 40, true];
-var banana = 'banana';
+let banana = 'banana';
 // anyはstring型のbananaにも代入できてしまう。
 banana = anything;
 // なので極力any型は使わずに記述する。
 // Union型
-var unionType = 10;
+let unionType = 10;
 // unionType.toUpperCase();
 unionType = 'hello';
 // unionType.toUpperCase();
 // union型は代入時のタイミングでしっかりと使えないメソッドはエラーを吐いてくれます。
 // Union型の配列は（）で囲む必要があります。
-var unionTypes = [21, 'hello'];
+let unionTypes = [21, 'hello'];
 // リテラル型
 // リテラル型は決まった値しか代入でき内容にする型
-var apple = 'apple';
-var clothSize = 'large';
-var close2 = {
+const apple = 'apple';
+let clothSize = 'large';
+const close2 = {
     color: 'white',
     size: clothSize
 };
@@ -110,13 +110,13 @@ console.log(sayHello());
 // 上記のようにreturnを記述すればundifinedを使えますが、基本的にvoidを使用します。
 // undefined型、null型
 // nullも代入できる
-var undefinedType = undefined;
+let undefinedType = undefined;
 // undefinedType = null;
 // undefinedも代入できる。
-var nullType = null;
+let nullType = null;
 // nullType = undefined;
 // 関数を保持する変数に型をつける。(関数の型注釈)
-var anotherAdd = add;
+const anotherAdd = add;
 // 関数
 // ・宣言時
 //   function say (str: string): void {
@@ -138,24 +138,24 @@ var anotherAdd = add;
 // const doubleNumber:(num: number) => number = num => num * 2;
 // コールバック関数の型定義
 function doubleAndHandler(num, cb) {
-    var doubelNumber = cb(num * 2);
+    const doubelNumber = cb(num * 2);
     return num * 2;
 }
 ;
-doubleAndHandler(21, function (doubleNum) {
+doubleAndHandler(21, doubleNum => {
     return doubleNum;
 });
 // unknown型とany型
 // any型は何でも代入できる。
-var anyVariable;
+let anyVariable;
 anyVariable = 'hello';
 anyVariable = 21;
 anyVariable = true;
 // unknown型は使う時だけ厳しくなる。
 // 基本anyと同じくなんでも代入できる。
-var unknownVariable;
+let unknownVariable;
 // string型の変数textにanyVariableは代入できるが、unkownVariableは代入できない。
-var text;
+let text;
 text = anyVariable;
 // text = unknownVariable;
 // unknown型を使用する場合は、typeofを使って条件分岐させます。
