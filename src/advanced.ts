@@ -22,3 +22,51 @@ type StringNumber = string | number
 
 //重なっている方が優先される => number
 type Mix = NumberBoolean & StringNumber
+
+// タイプガード
+// typeof演算子
+function toUpperCase(x: string | number) {
+  if (typeof x === "string") {
+    x.toUpperCase();
+  }
+  return '';
+}
+// in演算子
+// interface NomadWorker extends Engineer, Bloger {}
+type NomadWorker = Engineer | Bloger;
+
+function describeProfile(nomadWorker: NomadWorker) {
+  // EnginnerとBlogerはnameが共通しているから
+  console.log(nomadWorker.name);
+
+  if ("role" in nomadWorker) {
+    console.log(nomadWorker.role);
+  }
+
+  if ("folower" in nomadWorker) {
+    console.log(nomadWorker.folower);
+  }
+}
+// instanceof
+class Dog {
+  speak() {
+    console.log("gowgow");
+  }
+}
+
+class Bird {
+  speak() {
+    console.log("tweet");
+  }
+  fly() {
+    console.log("flutter");
+  }
+}
+
+type Pet = Dog | Bird;
+function havePet(pet: Pet) {
+  pet.speak();
+  if (pet instanceof Bird) {
+    pet.fly();
+  }
+}
