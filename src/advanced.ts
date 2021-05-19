@@ -49,12 +49,14 @@ function describeProfile(nomadWorker: NomadWorker) {
 }
 // instanceof
 class Dog {
+  kind: "dog" = "dog"
   speak() {
     console.log("gowgow");
   }
 }
 
 class Bird {
+  kind: "bird" = "bird"
   speak() {
     console.log("tweet");
   }
@@ -64,9 +66,20 @@ class Bird {
 }
 
 type Pet = Dog | Bird;
+
+// function havePet(pet: Pet) {
+//   pet.speak();
+//   if (pet instanceof Bird) {
+//     pet.fly();
+//   }
+// }
+
+// タグ付きユニオン
 function havePet(pet: Pet) {
-  pet.speak();
-  if (pet instanceof Bird) {
-    pet.fly();
+  switch(pet.kind) {
+    case "bird":
+      pet.fly();
+    case "dog":
+      pet.speak();
   }
 }
