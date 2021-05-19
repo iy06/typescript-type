@@ -12,7 +12,7 @@ const nameable: Nameble = {
 interface Human extends Nameble {
   age: number;
   // メソッドのみ適用できる書き方
-  greething(message: string): void;
+  greething(message?: string): void;
   // greething: (message: string) => void;
 }
 
