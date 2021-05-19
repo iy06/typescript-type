@@ -2,7 +2,7 @@
 
 interface Nameble {
   name?: string;
-  nickName: string;
+  nickName?: string;
 }
 
 const nameable: Nameble = {
