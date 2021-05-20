@@ -89,3 +89,6 @@ const input = document.getElementById("input") as HTMLInputElement;
 input.value = "initial input value";
 // 一行で記述することも出来る()をつける
 // (document.getElementById("input") as HTMLInputElement).value = "initial.value";
+
+// !(Non-null assertion operator)nullじゃないと言い切る
+const input2 = document.getElementById("input")!;
