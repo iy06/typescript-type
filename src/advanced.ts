@@ -140,3 +140,11 @@ const milk = "milk" as const;
 let dringk = milk;
 
 const array = [10, 20] as const;
+
+// typeofを型の中で使う
+const peter = {
+  name: "peter",
+  age: 38
+} as const;
+
+type PeterType = typeof peter;
