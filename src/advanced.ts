@@ -123,3 +123,7 @@ let downloadedData: DownloadedData = {
 }
 
 console.log(downloadedData.user?.name?.first);
+
+// Nullish Coalescing
+// 値がundifinedであればno-userを代入する。
+const userData = downloadedData.user ?? "no-user"
