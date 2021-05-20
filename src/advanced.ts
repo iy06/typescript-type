@@ -133,5 +133,10 @@ const userData = downloadedData.user ?? "no-user"
 // advancedFunc(1,1,1);
 
 function advancedFunc(...args: [number, string, boolean, ...number[]]) { };
-advancedFunc(1, "hello", true, 3,3,3,3,3);
+advancedFunc(1, "hello", true, 3, 3, 3, 3, 3);
 
+// constアサーション
+const milk = "milk" as const;
+let dringk = milk;
+
+const array = [10, 20] as const;
