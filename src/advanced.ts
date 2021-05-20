@@ -92,3 +92,17 @@ input.value = "initial input value";
 
 // !(Non-null assertion operator)nullじゃないと言い切る
 const input2 = document.getElementById("input")!;
+
+// インデックスシグネチャ
+interface Designer {
+  name: string;
+  [index: string]: string;
+}
+
+let designer: Designer = {
+  name: "Quill",
+}
+
+console.log(designer.name);
+//インデックスシグネチャは何でも実行できるけれど、Designerのプロパティの方はすべてstringにする制約がある。
+console.log(designer.fafafa);
