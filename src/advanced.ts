@@ -83,3 +83,9 @@ function havePet(pet: Pet) {
       pet.speak();
   }
 }
+// 型アサーションを使って型の上書きを行う JSXを使用する場合はasを使う
+const input = document.getElementById("input") as HTMLInputElement;
+// const input = <HTMLInputElement>document.getElementById("input");
+input.value = "initial input value";
+// 一行で記述することも出来る()をつける
+// (document.getElementById("input") as HTMLInputElement).value = "initial.value";
