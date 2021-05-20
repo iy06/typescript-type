@@ -106,3 +106,20 @@ let designer: Designer = {
 console.log(designer.name);
 //インデックスシグネチャは何でも実行できるけれど、Designerのプロパティの方はすべてstringにする制約がある。
 console.log(designer.fafafa);
+
+// Optional Chaining
+interface DownloadedData {
+  id: number;
+  user?: {
+    name?: {
+      first: string;
+      last: string;
+    }
+  }
+}
+
+let downloadedData: DownloadedData = {
+  id: 1
+}
+
+console.log(downloadedData.user?.name?.first);
