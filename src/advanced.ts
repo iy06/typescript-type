@@ -127,3 +127,11 @@ console.log(downloadedData.user?.name?.first);
 // Nullish Coalescing
 // 値がundifinedであればno-userを代入する。
 const userData = downloadedData.user ?? "no-user"
+
+// レストパラメーターに配列やタプルをしていする。
+// function advancedFunc(...args: number[]) { };
+// advancedFunc(1,1,1);
+
+function advancedFunc(...args: [number, string, boolean, ...number[]]) { };
+advancedFunc(1, "hello", true, 3,3,3,3,3);
+
