@@ -43,3 +43,18 @@ stringLightDatabase.add("orange");
 stringLightDatabase.remove("orange");
 stringLightDatabase.get();
 
+// interfaceとtypeにもGenericsをつける
+interface TmpDatabase<T> {
+  id: T;
+  data: T[];
+}
+
+// type TmpDatabase<T> = {
+//   id: T,
+//   data: T[]
+// }
+
+const tmpDatabase: TmpDatabase<number> = {
+  id: 1,
+  data: [1, 2, 3]
+}
