@@ -58,3 +58,12 @@ const tmpDatabase: TmpDatabase<number> = {
   id: 1,
   data: [1, 2, 3]
 }
+
+// defaultの型引数を設定する
+interface ResponseData<T extends { messegs: string }= any> {
+  data: T;
+  status:  number;
+}
+
+let tmp2: ResponseData;
+
