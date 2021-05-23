@@ -9,6 +9,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 function Logging(constructor) {
     console.log("Logging...");
 }
+// デコレーターで簡易的なフレームワークを作る
+function Component(template, selector) {
+    return function (constructor) {
+        const mountedElement = document.querySelector(selector);
+        const userInstance = new constructor();
+        if (mountedElement) {
+            mountedElement.innerHTML = template;
+            mountedElement.querySelector("h1").textContent = userInstance.name;
+        }
+    };
+}
 let User = class User {
     constructor() {
         this.name = "Quill";
@@ -16,22 +27,21 @@ let User = class User {
     }
 };
 User = __decorate([
+    Component("<h1>{{ name }}</h1>", "#app"),
     Logging
 ], User);
 const user1 = new User();
 //デコレーターで引数を取る
-function LogginsUser(message) {
-    return function (constructor) {
-        console.log(message);
-        console.log(constructor);
-    };
-}
-let UserLog = class UserLog {
-    constructor() {
-        this.name = "Quill";
-        console.log("User was created!");
-    }
-};
-UserLog = __decorate([
-    LogginsUser("Logging User...")
-], UserLog);
+// function LogginsUser(message: string) {
+//   return function(constructor: Function) {
+//     console.log(message);
+//     console.log(constructor);
+//   }
+// }
+// @LogginsUser("Logging User...")
+// class UserLog {
+//   name = "Quill";
+//   constructor() {
+//     console.log("User was created!");
+//   }
+// }

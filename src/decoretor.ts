@@ -5,15 +5,14 @@ function Logging(constructor: Function) {
 
 // デコレーターで簡易的なフレームワークを作る
 function Component(template: string, selector: string) {
-  return function(constructor: { new(): {name: string} }) {
+  return function(constructor: { new(...args: any[]): {name: string} }) {
     const mountedElement = document.querySelector(selector);
     const userInstance = new constructor();
-    
+
     if (mountedElement) {
       mountedElement.innerHTML = template;
       mountedElement.querySelector("h1")!.textContent = userInstance.name;
     }
-
   }
 }
 
