@@ -4,7 +4,7 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/food-app/main.ts",
+  entry: "./src/react.tsx",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
@@ -15,7 +15,7 @@ module.exports = {
   devtool: "inline-source-map",
   module: {
     rules: [{
-      test: /\.ts$/,
+      test: /\.tsx?$/,
       use: "ts-loader",
       exclude: "/node_modules/"
     }]
@@ -23,6 +23,6 @@ module.exports = {
   // webpackでtsをコンパイルする
   // ts-loaderで型検査をしてくれるが、tsconfig.jsonを参照しているオプションも存在するので必要
   resolve: {
-    extensions: [".ts",  ".js"]
+    extensions: [".tsx", ".ts",  ".js"]
   }
 }

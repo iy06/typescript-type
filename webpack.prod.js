@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "production",
-  entry: "./src/library.ts",
+  entry: "./src/react.tsx",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
